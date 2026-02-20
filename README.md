@@ -17,6 +17,7 @@
       * [tlshow last](#tlshow-last)
       * [tlshow project](#tlshow-project)
       * [tlshow category](#tlshow-category)
+      * [tlshow month 'YYYY-MM'](#tlshow-month-yyyy-mm)
   * [tlexport](#tlexport)
   * [tlexec](#tlexec)
 
@@ -156,6 +157,12 @@ Use `tlshow category` to see all entries filtered by a specific category in the 
 
 ![](.img/tlshow_category.png)
 
+##### tlshow month 'YYYY-MM'
+
+Use `tlshow month` to see all entries filtered by the provided month. Syntax is 
+`tlshow month <YYYY-MM>`. 
+
+![](.img/tlshow_month.png)
 
 ### tlexport
 

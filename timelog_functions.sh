@@ -34,7 +34,6 @@ tlshow() {
         echo "Usage: tlshow project <projectname>"
         return 1
       fi
-
       docker exec timelog psql -U admin -d timelog \
         -c "SELECT * FROM entries WHERE project = '$1';"
       ;;
@@ -48,9 +47,20 @@ tlshow() {
         echo "Usage: tlshow category <categoryname>"
         return 1
       fi
-
       docker exec timelog psql -U admin -d timelog \
         -c "SELECT * FROM entries WHERE category = '$1';"
+      ;;
+    month )
+      if [[ -z "$1" ]] || [[ ! "$1" =~ ^[0-9]{4}-[0-9]{2}$ ]]; then
+        echo "Error: month required in YYYY-MM format"
+        echo "Usage: tlsum month YYYY-MM"
+        return 1
+      fi
+      docker exec timelog psql -U admin -d timelog \
+        -c "SELECT *
+            FROM entries
+            WHERE date >= date_trunc('month', DATE '$1-01')
+              AND date <  date_trunc('month', DATE '$1-01') + INTERVAL '1 month';"
       ;;
     * )
       echo "Unknown subcommand: $subcommand"
@@ -63,6 +73,7 @@ tlshow() {
       echo "  tlshow project <projectname>"
       echo "  tlshow categories"
       echo "  tlshow category <categoryname>"
+      echo "  tlshow month <YYYY-MM>"
       return 1
       ;;
   esac
@@ -95,7 +106,6 @@ tlsum() {
         echo "Usage: tlsum project <projectname>"
         return 1
       fi
-
       docker exec timelog psql -U admin -d timelog -tA \
         -c "SELECT 'Total hours: ' || SUM(hours) AS result FROM entries WHERE project = '$1';"
       ;;
@@ -109,9 +119,20 @@ tlsum() {
         echo "Usage: tlsum category <categoryname>"
         return 1
       fi
-
       docker exec timelog psql -U admin -d timelog -tA \
         -c "SELECT 'Total hours: ' || SUM(hours) AS result FROM entries WHERE category = '$1';"
+      ;;
+    month )
+      if [[ -z "$1" ]] || [[ ! "$1" =~ ^[0-9]{4}-[0-9]{2}$ ]]; then
+        echo "Error: month required in YYYY-MM format"
+        echo "Usage: tlsum month YYYY-MM"
+        return 1
+      fi
+      docker exec timelog psql -U admin -d timelog -tA \
+        -c "SELECT 'Total hours: ' || COALESCE(SUM(hours),0) AS result
+            FROM entries
+            WHERE date >= date_trunc('month', DATE '$1-01')
+              AND date <  date_trunc('month', DATE '$1-01') + INTERVAL '1 month';"
       ;;
     * )
       echo "Unknown subcommand: $subcommand"
@@ -123,6 +144,7 @@ tlsum() {
       echo "  tlsum project <projectname>"
       echo "  tlsum categories"
       echo "  tlsum category <categoryname>"
+      echo "  tlsum month <YYYY-MM>"
       return 1
       ;;
   esac
