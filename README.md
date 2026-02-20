@@ -7,7 +7,7 @@
 * [How it works](#how-it-works)
 * [Installation and pre-requisites](#installation-and-pre-requisites)
 * [`tlhelp`](#tlhelp)
-* [`Functions`](#functions)
+* [Functions](#functions)
   * [`tlupdate`](#tlupdate)
     * [`tlupdate [YYYY-MM-DD]`](#tlupdate-yyyy-mm-dd)
   * [`tlshow`](#tlshow)
@@ -16,19 +16,19 @@
       * [`tlshow yesterday`](#tlshow-yesterday)
       * [`tlshow last`](#tlshow-last)
       * [`tlshow projects`](#tlshow-projects)
-      * [`tlshow project`](#tlshow-project)
+      * [`tlshow project <project_name>`](#tlshow-project-project_name)
       * [`tlshow categories`](#tlshow-categories)
-      * [`tlshow category`](#tlshow-category)
-      * [`tlshow month &lt;YYYY-MM&gt;`](#tlshow-month-ltyyyy-mmgt)
+      * [`tlshow category <category_name>`](#tlshow-category-category_name)
+      * [`tlshow month <YYYY-MM>`](#tlshow-month-yyyy-mm)
   * [`tlsum`](#tlsum)
     * [`tlsum` subcommands](#tlsum-subcommands)
       * [`tlsum today`](#tlsum-today)
       * [`tlsum yesterday`](#tlsum-yesterday)
       * [`tlsum projects [YYYY-MM]`](#tlsum-projects-yyyy-mm)
-      * [`tlsum project`](#tlsum-project)
+      * [`tlsum project <project_name>`](#tlsum-project-project_name)
       * [`tlsum categories [YYYY-MM]`](#tlsum-categories-yyyy-mm)
-      * [`tlsum category`](#tlsum-category)
-      * [`tlsum month &lt;YYYY-MM&gt;`](#tlsum-month-ltyyyy-mmgt)
+      * [`tlsum category <category_name>`](#tlsum-category-category_name)
+      * [`tlsum month <YYYY-MM>`](#tlsum-month-yyyy-mm)
   * [`tlexport`](#tlexport)
   * [`tlexec`](#tlexec)
 
@@ -92,7 +92,7 @@ Please, forgive me if the image is out of date. This is going to be an ever-evol
 
 Sheesh.
 
-## `Functions`
+## Functions
 
 The bash functions steal the show here. They make updating and viewing your timelog a breeze.
 
@@ -168,7 +168,7 @@ Studio Ops
 Studio Website
 ```
 
-##### `tlshow project`
+##### `tlshow project <project_name>`
 
 Use `tlshow project` to see all entries filtered by a specific project in the project column of the table. Syntax is 
 `tlshow project <project_name>`. Don't forget to wrap the `<project_name>` in quotes if it is more than one word!
@@ -196,14 +196,14 @@ Optimization
 Testing
 ```
 
-##### `tlshow category`
+##### `tlshow category <category_name>`
 
 Use `tlshow category` to see all entries filtered by a specific category in the category column of the table. Syntax is 
 `tlshow category <category_name>`. Don't forget to wrap the `<category_name>` in quotes if it is more than one word!
 
 ![](.img/tlshow_category.png)
 
-##### `tlshow month &lt;YYYY-MM&gt;`
+##### `tlshow month <YYYY-MM>`
 
 Use `tlshow month` to see all entries filtered by the provided month. Syntax is 
 `tlshow month <YYYY-MM>`. 
@@ -265,7 +265,7 @@ Optionally - pass the year and month (YYYY-MM) as a second argumet to see only t
 
 ![](.img/tlsum_projects.png)
 
-##### `tlsum project`
+##### `tlsum project <project_name>`
 
 Use `tlsum project` to see the sum of all hours for a specific project name. Syntax is 
 `tlsum project <project_name>`. Don't forget to wrap the `<project_name>` in quotes if it is more than one word!
@@ -284,7 +284,7 @@ Optionally - pass the year and month (YYYY-MM) as a second argumet to see only t
 
 ![](.img/tlsum_categories.png)
 
-##### `tlsum category`
+##### `tlsum category <category_name>`
 
 Use `tlsum category` to see the sum of all hours for a specific category. Syntax is 
 `tlsum category <category_name>`. Don't forget to wrap the `<category_name>` in quotes if it is more than one word!
@@ -295,7 +295,7 @@ Use `tlsum category` to see the sum of all hours for a specific category. Syntax
 Total hours: 4.00
 ```
 
-##### `tlsum month &lt;YYYY-MM&gt;`
+##### `tlsum month <YYYY-MM>`
 
 Use `tlsum month` to see the sum of all hours filtered by the provided month. Syntax is 
 `tlsum month <YYYY-MM>`. 
