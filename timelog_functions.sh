@@ -180,9 +180,9 @@ tlsum() {
       echo "  tlsum"
       echo "  tlsum today"
       echo "  tlsum yesterday"
-      echo "  tlsum projects"
+      echo "  tlsum projects [YYYY-MM]"
       echo "  tlsum project <projectname>"
-      echo "  tlsum categories"
+      echo "  tlsum categories [YYYY-MM]"
       echo "  tlsum category <categoryname>"
       echo "  tlsum month <YYYY-MM>"
       return 1
@@ -284,7 +284,7 @@ Track work entries in a local Postgres timelog database (via Docker).
 ${BOLD}USAGE${RESET}
   tlhelp
   tlshow [subcommand]
-  tlsum [subcommand]
+  tlsum [subcommand] [YYYY-MM]
   tlupdate [YYYY-MM-DD]
   tlexport
   tlexec
@@ -298,6 +298,7 @@ ${BOLD}AVAILABLE COMMANDS${RESET}
                 today                  Show entries for today (CURRENT_DATE)
                 yesterday              Show entries for yesterday
                 last                   Show the most recent entry
+                month <YYYY-MM>        Show all entries for a specific month
                 projects               Show list of all distinct projects
                 project <name>         Show entries for a specific project
                 categories             Show list of all distinct categories
@@ -308,15 +309,16 @@ ${BOLD}AVAILABLE COMMANDS${RESET}
                 (none)                 Show total hours for all entries
                 today                  Show total hours of today's entries (CURRENT_DATE)
                 yesterday              Show total hours of yesterday's entries
-                projects               Show total hours per distinct project
+                month <YYYY-MM>        Show total hours for a specific month
+                projects [YYYY-MM]     Show total hours per distinct project
                 project <name>         Show total hours for a specific project
-                categories             Show total hours per distinct category
+                categories [YYYY-MM]   Show total hours per distinct category
                 category <name>        Show total hours for a specific category
 
   tlupdate    Add a new entry (interactive prompts)
               Optionally supply the work date:
                 tlupdate               Uses the table default date (CURRENT_DATE)
-                tlupdate YYYY-MM-DD    Sets the entry date explicitly
+                tlupdate [YYYY-MM-DD]  Sets the entry date explicitly
 
   tlexport    Export entries table to a dated CSV in the current directory
               Output: timelog-YYYY-MM-DD.csv

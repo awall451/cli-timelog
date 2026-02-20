@@ -15,7 +15,9 @@
       * [tlshow today](#tlshow-today)
       * [tlshow yesterday](#tlshow-yesterday)
       * [tlshow last](#tlshow-last)
+      * [tlshow projects](#tlshow-projects)
       * [tlshow project](#tlshow-project)
+      * [tlshow categories](#tlshow-categories)
       * [tlshow category](#tlshow-category)
       * [tlshow month 'YYYY-MM'](#tlshow-month-yyyy-mm)
   * [tlsum](#tlsum)
@@ -152,12 +154,47 @@ Use `tlshow last` to see the last entry in the table. Useful to make sure the la
 
 ![](.img/tlshow_last.png)
 
+##### tlshow projects
+
+Use `tlshow projects` to see a list of all projects in the entries table. 
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$] on  (us-west-2) took 0s
+ ╰─λ tlshow projects
+Nebula Kart
+Personal Growth
+Starfall Odyssey
+Studio Ops
+Studio Website
+```
+
 ##### tlshow project
 
 Use `tlshow project` to see all entries filtered by a specific project in the project column of the table. Syntax is 
 `tlshow project <project_name>`. Don't forget to wrap the `<project_name>` in quotes if it is more than one word!
 
 ![](.img/tlshow_project.png)
+
+##### tlshow categories
+
+Use `tlshow categories` to see a list of all categories in the entries table. 
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$] on  (us-west-2) took 0s
+ ╰─λ tlshow categories
+Audio
+Bugfixing
+CI/CD
+Code Review
+Design
+Development
+Finance
+Learning
+Marketing
+Meetings
+Optimization
+Testing
+```
 
 ##### tlshow category
 
