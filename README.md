@@ -18,6 +18,15 @@
       * [tlshow project](#tlshow-project)
       * [tlshow category](#tlshow-category)
       * [tlshow month 'YYYY-MM'](#tlshow-month-yyyy-mm)
+  * [tlsum](#tlsum)
+    * [tlsum subcommands](#tlsum-subcommands)
+      * [tlsum today](#tlsum-today)
+      * [tlsum yesterday](#tlsum-yesterday)
+      * [tlsum projects](#tlsum-projects)
+      * [tlsum project](#tlsum-project)
+      * [tlsum categories](#tlsum-categories)
+      * [tlsum category](#tlsum-category)
+      * [tlsum month 'YYYY-MM'](#tlsum-month-yyyy-mm)
   * [tlexport](#tlexport)
   * [tlexec](#tlexec)
 
@@ -163,6 +172,102 @@ Use `tlshow month` to see all entries filtered by the provided month. Syntax is
 `tlshow month <YYYY-MM>`. 
 
 ![](.img/tlshow_month.png)
+
+### tlsum
+
+The `tlsum` function shows the total sum of hours for all timelog entries on the `entries` table.
+
+![](.img/tlsum.png)
+
+
+#### tlsum subcommands
+
+The `tlsum` function also has several subcommands to filter down what sum you are looking to achieve.
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╰─λ tlsum .
+Unknown subcommand: .
+Usage:
+  tlsum
+  tlsum today
+  tlsum yesterday
+  tlsum projects <YYYY-MM>
+  tlsum project <projectname>
+  tlsum categories <YYYY-MM>
+  tlsum category <categoryname>
+  tlsum month <YYYY-MM>
+```
+
+##### tlsum today
+
+Use `tlsum today` to see only the sum of today's entries! This is helpful when you are filling out timelog for the day, and are trying to hit your 8 
+hours without having to do all the math in your head (or on your fingers!).
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╰─λ tlsum today
+Total hours: 1.00
+```
+
+##### tlsum yesterday
+
+Use `tlsum yesterday` to see the sum of all entries for the day before - or in SQL talk, `CURRENT_DATE - INTERVAL '1 DAY'`
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╰─λ tlsum yesterday
+Total hours: 4.00
+```
+
+##### tlsum projects
+
+Use `tlsum projects` to see the sum of hours you have in each distinct project. 
+This will help give you full perspective of what projects your time is going into. 
+Optionally - pass the year and month (YYYY-MM) as a second argumet to see only the sum of that project for a specific month.
+
+![](.img/tlsum_projects.png)
+
+##### tlsum project
+
+Use `tlsum project` to see the sum of all hours for a specific project name. Syntax is 
+`tlsum project <project_name>`. Don't forget to wrap the `<project_name>` in quotes if it is more than one word!
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) 
+[🧱] × tlsum project 'Nebula Kart'
+Total hours: 54.50
+```
+
+##### tlsum categories
+
+Use `tlsum categories` to see the sum of all hours for each distinct category. 
+This will help give you full perspective of what categories your time is going into. 
+Optionally - pass the year and month (YYYY-MM) as a second argumet to see only the sum of that category for a specific month.
+
+![](.img/tlsum_categories.png)
+
+##### tlsum category
+
+Use `tlsum category` to see the sum of all hours for a specific category. Syntax is 
+`tlsum category <category_name>`. Don't forget to wrap the `<category_name>` in quotes if it is more than one word!
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╰─λ tlsum category 'Code Review'
+Total hours: 4.00
+```
+
+##### tlsum month 'YYYY-MM'
+
+Use `tlsum month` to see the sum of all hours filtered by the provided month. Syntax is 
+`tlsum month <YYYY-MM>`. 
+
+```bash
+ ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╰─λ tlsum month 2026-01
+Total hours: 47.50
+```
 
 ### tlexport
 
