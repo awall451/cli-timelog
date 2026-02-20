@@ -159,7 +159,7 @@ Use `tlshow last` to see the last entry in the table. Useful to make sure the la
 Use `tlshow projects` to see a list of all projects in the entries table. 
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$] on  (us-west-2) took 0s
  ╰─λ tlshow projects
 Nebula Kart
 Personal Growth
@@ -180,7 +180,7 @@ Use `tlshow project` to see all entries filtered by a specific project in the pr
 Use `tlshow categories` to see a list of all categories in the entries table. 
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$] on  (us-west-2) took 0s
  ╰─λ tlshow categories
 Audio
 Bugfixing
@@ -222,16 +222,16 @@ The `tlsum` function shows the total sum of hours for all timelog entries on the
 The `tlsum` function also has several subcommands to filter down what sum you are looking to achieve.
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
- ╰─λ tlsum .
+ ╭─dillon@garuda in repo: cli-timelog on  main [$] on  (us-west-2) took 0s
+[🔴] × tlsum .
 Unknown subcommand: .
 Usage:
   tlsum
   tlsum today
   tlsum yesterday
-  tlsum projects <YYYY-MM>
+  tlsum projects [YYYY-MM]
   tlsum project <projectname>
-  tlsum categories <YYYY-MM>
+  tlsum categories [YYYY-MM]
   tlsum category <categoryname>
   tlsum month <YYYY-MM>
 ```
@@ -242,7 +242,7 @@ Use `tlsum today` to see only the sum of today's entries! This is helpful when y
 hours without having to do all the math in your head (or on your fingers!).
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$!?] on  (us-west-2) took 0s
  ╰─λ tlsum today
 Total hours: 1.00
 ```
@@ -252,7 +252,7 @@ Total hours: 1.00
 Use `tlsum yesterday` to see the sum of all entries for the day before - or in SQL talk, `CURRENT_DATE - INTERVAL '1 DAY'`
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$!?] on  (us-west-2) took 0s
  ╰─λ tlsum yesterday
 Total hours: 4.00
 ```
@@ -271,7 +271,7 @@ Use `tlsum project` to see the sum of all hours for a specific project name. Syn
 `tlsum project <project_name>`. Don't forget to wrap the `<project_name>` in quotes if it is more than one word!
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) 
+ ╭─dillon@garuda in repo: cli-timelog on  main [$!?] on  (us-west-2) 
 [🧱] × tlsum project 'Nebula Kart'
 Total hours: 54.50
 ```
@@ -290,7 +290,7 @@ Use `tlsum category` to see the sum of all hours for a specific category. Syntax
 `tlsum category <category_name>`. Don't forget to wrap the `<category_name>` in quotes if it is more than one word!
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$!?] on  (us-west-2) took 0s
  ╰─λ tlsum category 'Code Review'
 Total hours: 4.00
 ```
@@ -301,7 +301,7 @@ Use `tlsum month` to see the sum of all hours filtered by the provided month. Sy
 `tlsum month <YYYY-MM>`. 
 
 ```bash
- ╭─dillon@garuda in repo: cli-timelog on  feature/tlsumMonth [$!?] on  (us-west-2) took 0s
+ ╭─dillon@garuda in repo: cli-timelog on  main [$!?] on  (us-west-2) took 0s
  ╰─λ tlsum month 2026-01
 Total hours: 47.50
 ```
