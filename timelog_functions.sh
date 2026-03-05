@@ -24,6 +24,16 @@ tlshow() {
       docker exec timelog psql -U admin -d timelog \
         -c "SELECT * FROM entries ORDER BY id DESC LIMIT 1;"
       ;;
+    date )
+      entry_date="$1"
+      if [[ ! "$entry_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+        echo "Error: date must be in YYYY-MM-DD format"
+        echo "Usage: tlshow date <YYYY-MM-DD>"
+        return 1
+      fi
+      docker exec timelog psql -U admin -d timelog \
+        -c "SELECT * FROM entries WHERE date = '${entry_date}';"
+      ;;
     projects )
       docker exec timelog psql -U admin -d timelog -tA \
         -c "SELECT DISTINCT project FROM entries ORDER BY project;"
@@ -95,6 +105,16 @@ tlsum() {
     yesterday )
       docker exec timelog psql -U admin -d timelog -tA \
         -c "SELECT 'Total hours: ' || SUM(hours) AS result FROM entries WHERE (date = CURRENT_DATE - INTERVAL '1 DAY');"
+      ;;
+    date )
+      entry_date="$1"
+      if [[ ! "$entry_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+        echo "Error: date must be in YYYY-MM-DD format"
+        echo "Usage: tlsum date <YYYY-MM-DD>"
+        return 1
+      fi
+      docker exec timelog psql -U admin -d timelog -tA \
+        -c "SELECT 'Total hours: ' || SUM(hours) AS result FROM entries WHERE date = '${entry_date}';"
       ;;
     projects )
       entry_date="$1"
@@ -298,6 +318,7 @@ ${BOLD}AVAILABLE COMMANDS${RESET}
                 today                  Show entries for today (CURRENT_DATE)
                 yesterday              Show entries for yesterday
                 last                   Show the most recent entry
+                date <YYYY-MM-DD>      Show all entries for a specific date
                 month <YYYY-MM>        Show all entries for a specific month
                 projects               Show list of all distinct projects
                 project <name>         Show entries for a specific project
@@ -309,6 +330,7 @@ ${BOLD}AVAILABLE COMMANDS${RESET}
                 (none)                 Show total hours for all entries
                 today                  Show total hours of today's entries (CURRENT_DATE)
                 yesterday              Show total hours of yesterday's entries
+                date <YYYY-MM-DD>      Show total hours for a specific date
                 month <YYYY-MM>        Show total hours for a specific month
                 projects [YYYY-MM]     Show total hours per distinct project
                 project <name>         Show total hours for a specific project
